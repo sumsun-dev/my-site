@@ -59,7 +59,7 @@ export const PROFILE = {
   email: "shmksumsun@gmail.com",
 
   links: {
-    github: "https://github.com/sosecrypto",
+    github: "https://github.com/sumsun-dev",
     telegram: "https://t.me/crypto_offroad",
     linkedin: "https://www.linkedin.com/in/상현-엄-5a03b628a/",
   },

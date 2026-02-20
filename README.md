@@ -100,6 +100,6 @@ npm run test       # Vitest 실행
 
 ## Contact
 
-- GitHub: [sosecrypto](https://github.com/sosecrypto)
+- GitHub: [sumsun-dev](https://github.com/sumsun-dev)
 - Telegram: [@crypto_offroad](https://t.me/crypto_offroad)
 - Email: shmksumsun@gmail.com

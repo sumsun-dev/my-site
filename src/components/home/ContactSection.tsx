@@ -10,7 +10,7 @@ const CONTACTS = [
   {
     icon: Github,
     platform: "GitHub",
-    handle: "@sosecrypto",
+    handle: "@sumsun-dev",
     href: PROFILE.links.github,
   },
   {
