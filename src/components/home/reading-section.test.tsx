@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import ReadingSection from "./reading-section";
+import { LIFE_PROFILE } from "@/lib/constants";
 
 // Framer Motion mock
 vi.mock("framer-motion", () => ({
@@ -9,8 +10,9 @@ vi.mock("framer-motion", () => ({
       children,
       ...props
     }: React.HTMLAttributes<HTMLDivElement> & Record<string, unknown>) => {
-      const { initial, whileInView, viewport, transition, ...rest } = props as Record<string, unknown>;
-      void initial; void whileInView; void viewport; void transition;
+      const { variants, initial, whileInView, viewport, transition, ...rest } =
+        props as Record<string, unknown>;
+      void variants; void initial; void whileInView; void viewport; void transition;
       const htmlProps = Object.fromEntries(
         Object.entries(rest).filter(([, v]) => typeof v !== "object" || v === null)
       );
@@ -26,17 +28,53 @@ describe("ReadingSection", () => {
     expect(document.getElementById("reading")).toBeInTheDocument();
   });
 
-  it("'Coming Soon' 텍스트를 표시한다", () => {
+  it("섹션 헤더를 렌더링한다", () => {
     render(<ReadingSection />);
 
-    expect(screen.getByText("Coming Soon")).toBeInTheDocument();
+    const header = document.getElementById("reading");
+    expect(header?.querySelector("h2")).toBeInTheDocument();
   });
 
-  it("준비 중 안내 메시지를 표시한다", () => {
+  it("LIFE_PROFILE.books 개수만큼 책 카드를 렌더링한다", () => {
     render(<ReadingSection />);
 
-    expect(
-      screen.getByText("읽고 있는 책과 독서 기록을 준비하고 있습니다.")
-    ).toBeInTheDocument();
+    LIFE_PROFILE.books.forEach((book) => {
+      expect(screen.getByText(book.title)).toBeInTheDocument();
+    });
+  });
+
+  it("각 책의 제목과 저자를 표시한다", () => {
+    render(<ReadingSection />);
+
+    LIFE_PROFILE.books.forEach((book) => {
+      expect(screen.getByText(book.title)).toBeInTheDocument();
+      expect(screen.getByText(book.author)).toBeInTheDocument();
+    });
+  });
+
+  it("status에 따라 Badge를 표시한다", () => {
+    render(<ReadingSection />);
+
+    const finishedCount = LIFE_PROFILE.books.filter((b) => b.status === "finished").length;
+    const readingCount = LIFE_PROFILE.books.filter((b) => b.status === "reading").length;
+    const wishlistCount = LIFE_PROFILE.books.filter((b) => b.status === "wishlist").length;
+
+    const badges = screen.getAllByText(/^(finished|reading|wishlist)$/);
+    const finished = badges.filter((el) => el.textContent === "finished");
+    const reading = badges.filter((el) => el.textContent === "reading");
+    const wishlist = badges.filter((el) => el.textContent === "wishlist");
+
+    expect(finished).toHaveLength(finishedCount);
+    expect(reading).toHaveLength(readingCount);
+    expect(wishlist).toHaveLength(wishlistCount);
+  });
+
+  it("review가 있는 책은 리뷰를 표시한다", () => {
+    render(<ReadingSection />);
+
+    const booksWithReview = LIFE_PROFILE.books.filter((b) => b.review);
+    booksWithReview.forEach((book) => {
+      expect(screen.getByText(book.review!)).toBeInTheDocument();
+    });
   });
 });
