@@ -4,7 +4,7 @@ import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Github, Send, Linkedin, ChevronDown } from "lucide-react";
 import dynamic from "next/dynamic";
-import { PROFILE } from "@/lib/constants";
+import { PROFILE, LIFE_PROFILE } from "@/lib/constants";
 import { useLifeWork } from "@/hooks/useLifeWork";
 import TypeWriter from "@/components/terminal/TypeWriter";
 import GlitchText from "@/components/effects/GlitchText";
@@ -28,7 +28,10 @@ export default function Hero() {
   const [nameComplete, setNameComplete] = useState(false);
   const { mode } = useLifeWork();
 
-  const bgType = mode === "life" ? "video" : "matrix";
+  const isLife = mode === "life";
+  const bgType = isLife ? "video" : "matrix";
+  const title = isLife ? LIFE_PROFILE.title : PROFILE.title;
+  const roles = isLife ? LIFE_PROFILE.roles : PROFILE.roles;
 
   const handleNameComplete = useCallback(() => {
     setNameComplete(true);
@@ -64,19 +67,21 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
-        {/* Prompt */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="font-mono text-sm text-text-secondary mb-6"
-        >
-          <span className="text-accent-cyan">visitor@terminal</span>
-          <span className="text-text-secondary">:</span>
-          <span className="text-accent-green">~</span>
-          <span className="text-text-secondary">$</span>{" "}
-          <span className="text-accent-green">whoami</span>
-        </motion.p>
+        {/* Prompt — WORK 모드에서만 표시 */}
+        {!isLife && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="font-mono text-sm text-text-secondary mb-6"
+          >
+            <span className="text-accent-cyan">visitor@terminal</span>
+            <span className="text-text-secondary">:</span>
+            <span className="text-accent-green">~</span>
+            <span className="text-text-secondary">$</span>{" "}
+            <span className="text-accent-green">whoami</span>
+          </motion.p>
+        )}
 
         {/* Name */}
         <motion.h1
@@ -118,15 +123,16 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
           >
             <p className="font-mono text-lg sm:text-xl mb-8">
-              <GlitchText
-                text={PROFILE.title}
-                className="text-accent-cyan"
-              />
+              {isLife ? (
+                <span className="text-accent-amber">{title}</span>
+              ) : (
+                <GlitchText text={title} className="text-accent-cyan" />
+              )}
             </p>
 
             {/* Roles */}
             <div className="space-y-2 mb-10">
-              {PROFILE.roles.map((role, i) => (
+              {roles.map((role, i) => (
                 <motion.p
                   key={role}
                   initial={{ opacity: 0, x: -20 }}
