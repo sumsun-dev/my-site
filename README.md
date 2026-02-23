@@ -18,6 +18,7 @@
 | Auth | Supabase Auth |
 | Markdown | react-markdown, rehype-highlight, remark-gfm |
 | Font | Pretendard (KR), JetBrains Mono (EN) |
+| Deployment | Vercel (GitHub 연동 자동 배포) |
 
 ## Project Structure
 
@@ -102,6 +103,7 @@ npm run test       # Vitest 실행
 - [x] 블로그 시스템 (Supabase + Markdown)
 - [x] 관리자 패널 (게시물 CRUD)
 - [x] SEO 메타데이터, OG 태그, sitemap, robots.txt
+- [x] Vercel 배포 (GitHub push 시 자동 빌드)
 
 ## Contact
 
