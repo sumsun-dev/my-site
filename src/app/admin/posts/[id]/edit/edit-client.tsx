@@ -1,7 +1,7 @@
 "use client";
 
 import PostForm, { type PostFormData } from "@/components/admin/PostForm";
-import { updatePost } from "@/lib/supabase/admin-queries";
+import { updatePostAction } from "../../actions";
 import type { Post } from "@/types";
 
 interface EditPostClientProps {
@@ -10,7 +10,7 @@ interface EditPostClientProps {
 
 export default function EditPostClient({ post }: EditPostClientProps) {
   const handleSubmit = async (data: PostFormData) => {
-    await updatePost(post.id, data);
+    await updatePostAction(post.id, data);
   };
 
   return (

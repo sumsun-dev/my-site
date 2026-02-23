@@ -1,11 +1,11 @@
 "use client";
 
 import PostForm, { type PostFormData } from "@/components/admin/PostForm";
-import { createPost } from "@/lib/supabase/admin-queries";
+import { createPostAction } from "../actions";
 
 export default function NewPostPage() {
   const handleSubmit = async (data: PostFormData) => {
-    await createPost(data);
+    await createPostAction(data);
   };
 
   return (

@@ -18,8 +18,8 @@ export default function AdminPostList({ initialPosts }: AdminPostListProps) {
     if (!confirm("정말 삭제하시겠습니까?")) return;
 
     try {
-      const { deletePost } = await import("@/lib/supabase/admin-queries");
-      const success = await deletePost(id);
+      const { deletePostAction } = await import("./actions");
+      const success = await deletePostAction(id);
       if (success) {
         setPosts((prev) => prev.filter((p) => p.id !== id));
       }
@@ -30,8 +30,8 @@ export default function AdminPostList({ initialPosts }: AdminPostListProps) {
 
   const handleTogglePublish = async (id: string, published: boolean) => {
     try {
-      const { togglePublish } = await import("@/lib/supabase/admin-queries");
-      const success = await togglePublish(id, !published);
+      const { togglePublishAction } = await import("./actions");
+      const success = await togglePublishAction(id, !published);
       if (success) {
         setPosts((prev) =>
           prev.map((p) =>
