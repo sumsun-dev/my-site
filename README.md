@@ -103,6 +103,8 @@ npm run test       # Vitest 실행
 - [x] 블로그 시스템 (Supabase + Markdown)
 - [x] 관리자 패널 (게시물 CRUD)
 - [x] SEO 메타데이터, OG 태그, sitemap, robots.txt
+- [x] 동적 OG 이미지 (터미널 테마, 포스트별 자동 생성)
+- [x] 접근성 (focus-visible, ARIA, role, aria-live)
 - [x] Vercel 배포 (GitHub push 시 자동 빌드)
 
 ## Contact

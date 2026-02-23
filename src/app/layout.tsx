@@ -33,6 +33,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "엄상현 | Terminal Odyssey",
+    description: "AI Vibe Coder & Web3 Native — 엄상현의 개인 사이트",
+  },
 };
 
 export default function RootLayout({
