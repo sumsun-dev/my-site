@@ -59,6 +59,11 @@ export default function DailyLifeSection() {
               <p className="text-base font-semibold text-text-primary">
                 {entry.activity}
               </p>
+              {entry.detail && (
+                <p className="text-xs text-text-secondary mt-1 leading-relaxed">
+                  {entry.detail}
+                </p>
+              )}
             </div>
           </motion.div>
         ))}

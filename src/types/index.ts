@@ -67,12 +67,14 @@ export interface DailyRoutine {
   time: string;
   activity: string;
   icon: string;
+  detail?: string;
 }
 
 export interface Quote {
   text: string;
   source: string;
   icon: string;
+  note?: string;
 }
 
 export interface Book {
@@ -95,6 +97,7 @@ export interface Skill {
   name: string;
   level: number;
   category: SkillCategory;
+  desc?: string;
 }
 
 export type SkillCategory = "language" | "framework" | "tool" | "blockchain";

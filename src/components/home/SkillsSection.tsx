@@ -57,7 +57,7 @@ export default function SkillsSection() {
           {filtered.map((skill) => (
             <motion.div key={skill.name} variants={item}>
               <GlowCard className="!p-4">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-1">
                   <span className="font-mono text-sm text-text-primary">
                     {skill.name}
                   </span>
@@ -65,6 +65,9 @@ export default function SkillsSection() {
                     {skill.level}%
                   </span>
                 </div>
+                {skill.desc && (
+                  <p className="text-xs text-text-secondary mb-2">{skill.desc}</p>
+                )}
                 <div className="h-1.5 bg-bg-primary rounded-full overflow-hidden">
                   <motion.div
                     className="h-full rounded-full bg-gradient-to-r from-accent-cyan to-accent-green"

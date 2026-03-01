@@ -37,7 +37,7 @@ describe("ContactSection", () => {
   it("안내 문구를 표시한다", () => {
     render(<ContactSection />);
 
-    expect(screen.getByText(/커피챗.*토론.*환영합니다/)).toBeInTheDocument();
+    expect(screen.getByText(/편하게 연락 주세요/)).toBeInTheDocument();
   });
 
   it("이메일 CTA 링크를 표시한다", () => {

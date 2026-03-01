@@ -23,9 +23,9 @@ describe("Footer", () => {
     expect(screen.getByText(new RegExp(PROFILE.nameEn))).toBeInTheDocument();
   });
 
-  it("Built with 텍스트를 표시한다", () => {
+  it("Designed & coded 텍스트를 표시한다", () => {
     render(<Footer />);
 
-    expect(screen.getByText(/Built with/)).toBeInTheDocument();
+    expect(screen.getByText(/Designed & coded in Seoul/)).toBeInTheDocument();
   });
 });

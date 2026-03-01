@@ -26,8 +26,9 @@ export default function ContactSection() {
       >
         <GlowCard className="text-center">
           <Mail size={32} className="mx-auto mb-4 text-accent-cyan" />
-          <p className="text-text-secondary mb-4 text-sm">
-            커피챗 &amp; 토론 모두 환영합니다.
+          <p className="text-text-secondary mb-4 text-sm leading-relaxed">
+            새로운 프로젝트, 흥미로운 아이디어, 혹은 그냥 커피 한 잔 —<br />
+            어떤 이유든 좋습니다. 편하게 연락 주세요.
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <a

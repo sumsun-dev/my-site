@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-secondary font-mono">
           <p>
-            <span className="text-accent-green">$</span> echo &quot;Built with Next.js &amp; Tailwind&quot;
+            <span className="text-accent-green">$</span> echo &quot;Designed &amp; coded in Seoul, powered by Next.js&quot;
           </p>
           <p>
             &copy; {new Date().getFullYear()} {PROFILE.nameEn}. All rights reserved.

@@ -22,6 +22,11 @@ export default function AboutSection() {
     <section className="py-20">
       <SectionHeader command="cat about.md" id="about" />
 
+      <p className="text-text-secondary text-sm leading-relaxed mb-8 max-w-2xl">
+        블록체인 업계에서 6년, 콘텐츠 프로듀서로 시작해 마케터 · 전략가 · 애널리스트를 거쳐
+        지금은 코드를 씁니다. 어디서든 빠르게 배우고, 필요하면 직접 만드는 사람입니다.
+      </p>
+
       <motion.div
         variants={container}
         initial="hidden"
